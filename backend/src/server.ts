@@ -1,8 +1,12 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import express from "express";
 import cors from "cors";
-import jwt from "jsonwebtoken";
 import foodRouter from './routers/food.router';
 import userRouter from './routers/user.router';
+import { dbConnect } from './config/database.config';
+dbConnect();
 
 const app = express();
 app.use(express.json());
