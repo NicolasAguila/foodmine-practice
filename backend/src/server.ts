@@ -5,7 +5,7 @@ import express from "express";
 import cors from "cors";
 import foodRouter from './routers/food.router';
 import userRouter from './routers/user.router';
-import { dbConnect } from './config/database.config';
+import { dbConnect } from './configs/database.config';
 dbConnect();
 
 const app = express();

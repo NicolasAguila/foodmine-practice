@@ -26,7 +26,8 @@ router.post("/login", asyncHandler (
                 
                 res.send(generateTokenResponse(user));
             }else{
-                res.status(400).send("User name or password is not valid!");
+                const BAD_REQUEST = 400;
+                res.status(BAD_REQUEST).send("User name or password is not valid!");
             }
     }
 ))
@@ -34,7 +35,7 @@ router.post("/login", asyncHandler (
 const generateTokenResponse = (user: User) => {
     const token = jwt.sign({
         id: user.id, email:user.email, isAdmin: user.isAdmin
-    },"SomeRandomText", {
+    },process.env.JWT_SECRET!, {
         expiresIn:"30d"
     });
 
